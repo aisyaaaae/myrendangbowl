@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: url('image/Background.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* Header Styling */
+        /* Header Styling */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(102, 80, 47);
+    color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+
+.header .left-header {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between logo, home button, and hamburger */
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.header .homepage-icon img {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.header .hamburger {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+        /* Marquee Section */
+        .marquee {
+            background-color: #fdc9a1e3;
+            color: #181C14;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Content Styling */
+       .content h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #6b4400;
+    margin-top: 100px;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+/* Side-by-side layout */
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 20px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Card styling */
+.card {
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    flex: 0 1 450px; /* Max width per card */
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    font-size: 22px;
+    color: #6b4400;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+}
+
+
+
+        /* Team Section Styling */
+.team-section {
+    display: flex;
+    justify-content: center;  /* Center the team members */
+    gap: 40px;  /* Space between the cards */
+    margin-top: 40px;
+    flex-wrap: wrap;
+    max-width: 1200px;  /* Limit the width */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+    margin-bottom: 80px;  /* Added more space at the bottom */
+}
+
+
+.team-member-card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;  /* Rounded corners */
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1); /* Soft shadow for the card */
+    text-align: center;
+    width: 280px;  /* Fixed card width */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member-card:hover {
+    transform: translateY(-10px); /* Elevates the card on hover */
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);  /* Stronger shadow on hover */
+}
+
+.member-image {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;  /* Circle image */
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);  /* Soft shadow around image */
+    transition: transform 0.3s ease, box-shadow 0.3s ease-in-out;
+}
+
+.member-image:hover {
+    transform: scale(1.1);  /* Zoom effect on hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+}
+
+.member-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #6b4400;  /* Dark brown color for name */
+    margin-bottom: 5px;
+}
+
+.member-role {
+    font-size: 14px;
+    color: #555;  /* Dark gray for role */
+}
+
+
+
+        /* Footer Styling */
+        footer {
+            background-color: #fdc9a1e3;
+            color: rgb(0, 0, 0);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .footer-links ul li {
+            font-size: 16px;
+        }
+
+        .footer-links ul li a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links ul li a:hover {
+            color: #000000;
+        }
+
+        .social-media {
+            margin: 20px 0;
+        }
+
+        .social-media span {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+        }
+
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+    <div class="left-header">
+        <div class="logo">
+            <a href="index.html">
+                <img src="image/Logo.png" alt="Logo">
+            </a>
+        </div>
+        <a href="index.html" class="homepage-icon">
+            <img src="image/Home.png" alt="Home">
+        </a>
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+</header>
+
+
+    <div class="marquee">
+        <marquee>
+            <img src="image/my flag.png" alt="SG flag" style="height: 20px; margin-right: 10px;">Rendang Maman, where authentic flavors meet tradition in every bite. Indulge in our mouthwatering rendang, carefully crafted with love and the finest ingredients, bringing a taste of heritage to your table. <img src="image/my flag.png" alt="SG flag" style="height: 20px; margin-right: 10px;">
+        </marquee>
+    </div>
+
+    <!-- Objectives and Purpose Section -->
+    <div class="content">
+    <h1>About Us</h1>
+
+    <div class="about-container">
+        <!-- Objective -->
+        <div class="card">
+            <h2>Objective</h2>
+            <p>
+                Our objective is to preserve and celebrate Rendang Maman, a traditional dish from Negeri Sembilan, by documenting its history,  and cultural significance. We aim to raise awareness and appreciation for this iconic dish, ensuring its legacy is passed on to future generations.
+            </p>
+        </div>
+
+        <!-- Purpose -->
+        <div class="card">
+            <h2>Purpose</h2>
+            <p>
+                The purpose of this project is to create a digital archive dedicated to Rendang Maman, highlighting its cultural value and history. We seek to promote this traditional dish globally, fostering pride in its heritage and sharing its story with a wider audience.
+            </p>
+        </div>
+    </div>
+</div>
+
+    <div class="team-section">
+    <!-- Team Member 1 -->
+    <div class="team-member-card">
+        <img src="image/profile1.jpg" alt="John Doe" class="member-image">
+        <div class="member-name">Aina Afrina Mazhar</div>
+        <div class="member-role">Project Manager</div>
+    </div>
+    <!-- Team Member 2 -->
+    <div class="team-member-card">
+        <img src="image/profile2.jpg" alt="Jane Smith" class="member-image">
+        <div class="member-name">Norminzayani Zamri</div>
+        <div class="member-role">Lead Developer </div>
+    </div>
+    <!-- Team Member 3 -->
+    <div class="team-member-card">
+        <img src="image/profile3.jpg" alt="Michael Tan" class="member-image">
+        <div class="member-name">Aisyaezetty Rozaimi</div>
+        <div class="member-role">UX Designer </div>
+    </div>
+</div>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Rendang Maman. All rights reserved.</p>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="social-media">
+                <span>Follow us:</span>
+                <a href="https://www.instagram.com/myrendangbowl_?igsh=eDlwOW9icGlrNXBq"><img src="image/icon ig.png" alt="Instagram" class="social-icon"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const dropdown = document.getElementById("dropdown");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.hamburger')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    const openDropdown = dropdowns[i];
+                    if (openDropdown.style.display === "block") {
+                        openDropdown.style.display = "none";
+                    }
+                }
+            }
+        };
+    </script>
+
+</body>
+</html>

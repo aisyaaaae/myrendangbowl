@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgb(102, 80, 47);
+            color: white;
+            position: relative;
+            z-index: 10;
+        }
+
+        .left-header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .logo img {
+            height: 40px; 
+            width: auto; 
+            max-width: 100%; 
+            display: block; 
+        }
+
+        .logo {
+            display: flex;
+            align-items: center; 
+        }
+
+        .homepage-icon img {
+            width: 45px; 
+            height: 45px;
+            cursor: pointer;
+            margin-right: 20px; 
+        }
+
+        .homepage-icon img:hover {
+            opacity: 0.7; 
+        }
+
+        .hamburger {
+            background: none;
+            border: none;
+            color: #000000;
+            font-size: 24px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            color: black;
+            width: 100%;
+            top: 100%;
+            left: 0;
+            z-index: 1;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px 0;
+            border-top: 2px solid #000000;
+        }
+
+        .collection-group {
+            display: inline-block;
+            vertical-align: top;
+            padding: 10px;
+            width: 20%;
+            box-sizing: border-box;
+        }
+
+        .collection-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+            color: #020202;
+            text-decoration: none;
+        }
+
+        .collection-title:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown-item {
+            font-size: 14px;
+            display: block;
+            padding: 5px 0;
+            color: black;
+            text-decoration: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .right-header {
+            display: flex;
+            align-items: center;
+        }
+
+        .marquee {
+            background-color: #fdc9a1e3;
+            color: #181C14;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+.content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 20px;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.slide-text {
+    width: 60%; 
+    padding: 20px 30px; 
+    box-sizing: border-box;
+    text-align: justify;
+    color: #333;
+    background: linear-gradient(145deg, #ffffff, #f1f1f1); 
+    border-radius: 25px; 
+    margin: auto;
+    position: relative;
+    box-shadow: 
+    10px 10px 20px rgba(0, 0, 0, 0.15), 
+    -10px -10px 20px rgba(255, 255, 255, 0.8); 
+    border: 1px solid #ddd; 
+    font-family: 'Merriweather', serif; 
+    letter-spacing: 1px; 
+    line-height: 1.6; 
+    max-height: none; 
+    height: auto; 
+}
+
+.slide-text:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #6b4400, #f1c98d);
+    border-radius: 50%;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.slide-text:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #6b4400, #f1c98d);
+    border-radius: 50%;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.slide-text:hover {
+    transform: translateY(-5px); 
+    box-shadow: 
+    12px 12px 25px rgba(0, 0, 0, 0.2), 
+    -12px -12px 25px rgba(255, 255, 255, 0.9); 
+}
+
+.slideshow-container {
+    position: relative;
+    width: 50%;
+    max-width: 600px;
+    height: 400px;
+    overflow: hidden;
+    background-color: #000;
+    border-radius: 10px;
+}
+
+.slideshow-container, .sub-images img, footer {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.slides {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.caption {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    color: white;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    color: white;
+    font-size: 24px;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+body {
+font-family: 'Merriweather', serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+background: url('image/Background.png') no-repeat center center fixed; 
+background-size: cover; 
+}
+
+footer {
+    background-color: #fdc9a1e3;
+    color: rgb(0, 0, 0);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content p {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+.footer-links {
+    margin: 20px 0;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.footer-links ul li {
+    font-size: 16px;
+}
+
+.footer-links ul li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #000000;
+}
+
+.social-media {
+    margin: 20px 0;
+}
+
+.social-media span {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.social-media a {
+    margin: 0 10px;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+
+.sub-images {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px;
+    padding: 20px;
+}
+
+.sub-images img {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover; 
+    border-radius: 5px;
+}   
+
+body {
+    font-family: 'Merriweather', serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo img {
+    height: 40px; 
+    width: auto;
+    max-width: 100%; 
+    display: block; 
+}
+
+.logo {
+    display: flex;
+    align-items: center; 
+}
+
+.homepage-icon img {
+    width: 24px; 
+    height: 24px;
+    cursor: pointer;
+    margin-right: 20px; 
+}
+
+.homepage-icon img:hover {
+    opacity: 0.7; 
+}
+
+.collection-group {
+    display: inline-block;
+    vertical-align: top;
+    padding: 10px;
+    width: 20%;
+    box-sizing: border-box;
+}
+
+.collection-title:hover {
+    text-decoration: underline;
+}
+
+.dropdown-item {
+    font-size: 14px;
+    display: block;
+    padding: 5px 0;
+    color: black;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+.right-header {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+    gap: 8px; 
+}
+
+.search-bar input {
+    width: 200px; 
+    padding: 8px 12px;
+    font-size: 14px; 
+    border: 1.5px solid #e5e5e5;
+    border-radius: 20px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease-in-out;
+}
+.user-icon img, .cart-icon img {
+    width: 24px; 
+    height: 24px; 
+    cursor: pointer;
+}
+
+.user-icon img:hover, .cart-icon img:hover {
+    opacity: 0.7; 
+}
+.navbar {
+    background-color: #545454;
+    overflow: hidden;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #333;
+}
+
+.container {
+    width: 85%; 
+    margin: 20px auto;
+    text-align: center;
+}
+
+.collections-title {
+    font-size: 2rem;
+    margin: 20px 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px; 
+}
+
+.collection-item {
+    background: linear-gradient(145deg, #f0f0f0, #ffffff); 
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); 
+    padding: 15px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease-out, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.collection-item img {
+    width: 90%; 
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.collection-item .item-name {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1rem; 
+    color: #333;
+}
+
+
+.collection-item .item-price {
+    font-weight: bold;
+    margin: 10px 0;
+    font-family:'Merriweather', serif;
+    font-size: 1.05rem; 
+    color: #2c3e50; 
+}
+.collection-item:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px); 
+}
+
+.collection-item img:hover {
+    transform: scale(1.05); 
+}
+
+.collection-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.social-media {
+    margin: 20px 0;
+}
+
+.social-media span {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.social-media a {
+    margin: 0 10px;
+}
+
+.social-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+</style>
+</head>
+<body>
+    <header class="header">
+        <div class="left-header">
+<div class="logo">
+    <a href="index.html">
+        <img src="image/Logo.png">
+    </a>
+</div>
+        <a href="index.html" class="homepage-icon">
+            <img src="image/Home.png">
+        </a>
+     <button class="hamburger" onclick="toggleMenu()">☰</button>
+            <div id="dropdown" class="dropdown-content">
+                <div class="collection-group">
+                    <a href="aboutus.html" class="collection-title">About us</a>
+                </div>
+                <div class="collection-group">
+                    <a href="history.html" class="collection-title">History</a>
+                    <a href="history.html" class="dropdown-item">News</a>
+                    <a href="history.html" class="dropdown-item">Government</a>
+                </div>
+                <div class="collection-group">
+                    <a href="recipes.html" class="collection-title">Recipes</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="marquee">
+        <marquee>
+            <img src="image/my flag.png" alt="SG flag" style="height: 20px; margin-right: 10px;">Rendang Maman, where authentic flavors meet tradition in every bite. Indulge in our mouthwatering rendang, carefully crafted with love and the finest ingredients, bringing a taste of heritage to your table. <img src="image/my flag.png" alt="SG flag" style="height: 20px; margin-right: 10px;">
+        </marquee>
+</div>
+        </div>
+    </header>
+<div class="grid-container">
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/myresipi.jpeg" alt="Recipes 1 - MyResipi" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: Rendang Maman Ayam Pencen Cara MUDAH, Panas Banyak Kali Pun Sedap!</p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Duration: 1 minutes 56 seconds</p>
+                    <p class="details">Size of File Archived: 11162523</p>
+                    <p class="details">No of File Archived: 218</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 9.95 MB</p>
+                    <p class="details">No of File Archived: 2 Pages</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/hellokerja.jpeg" alt="Recipes 2 - Hellokerja" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: 10 Resepi Rendang Tradisional Boleh Anda Sediakan Sendiri Di Rumah</p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Duration: 55 seconds</p>
+                    <p class="details">Size of File Archived: 3028901</p>
+                    <p class="details">No of File Archived: 44</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 4.74 MB</p>
+                    <p class="details">No of File Archived: 1 Pages</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/dapurtanpasempadan.jpeg" alt="Recipes 3 - Dapur tanpa sempadan" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: Resipi Ayam Daun Maman</p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Duration: 3 minutes 7 seconds</p>
+                    <p class="details">Size of File Archived: 17953778</p>
+                    <p class="details">No of File Archived: 111</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 2.09 MB</p>
+                    <p class="details">No of File Archived: 1 Pages</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="grid-container">
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/rasa.my.jpeg" alt="Recipes 4 - Rasa.My" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: Rendang Maman Gemencheh, Antara Rendang Terlazat Di Akui Oleh CNN International. Hebat! </p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Duration: 35 seconds</p>
+                    <p class="details">Size of File Archived: 26344406</p>
+                    <p class="details">No of File Archived: 83</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 10.38 MB</p>
+                    <p class="details">No of File Archived: 1 Pages</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/rasa.my.jpeg" alt="Recipes 5 - Rasa.My" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: Cara Buat Rendang Maman, Ini Resipi Mudah Yang Bila Buat Pasti Menjadi!</p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Duration: 37 minutes 18 seconds</p>
+                    <p class="details">Size of File Archived: 9102391</p>
+                    <p class="details">No of File Archived: 89</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 13.12 MB</p>
+                    <p class="details">No of File Archived: 1 Pages</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/blogger.jpeg" alt="Recipes 6 - secawancoffee blogspot" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: Rendang Maman Negeri Sembilan Terbaik</p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Duration: 8 minutes 40 seconds</p>
+                    <p class="details">Size of File Archived: 32868688</p>
+                    <p class="details">No of File Archived: 396</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 1.58 MB</p>
+                    <p class="details">No of File Archived: 2 Pages</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="grid-container">
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/blogger.jpeg" alt="Recipes 7 - Food Daebak blogspot" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: Rendang Maman Negori</p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Duration: 30 seconds</p>
+                    <p class="details">Size of File Archived: 2183357</p>
+                    <p class="details">No of File Archived: 26</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 2.46 MB</p>
+                    <p class="details">No of File Archived: 2 Pages</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/blogger.jpeg" alt="Recipes 8 - Mak Ani Food blogspot" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: Produk Projek Ekonomi Rendang Maman Ayam</p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Duration: 34 seconds</p>
+                    <p class="details">Size of File Archived:  4189348</p>
+                    <p class="details">No of File Archived: 41</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 4.38 MB</p>
+                    <p class="details">No of File Archived: 1 Pages</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/blogger.jpeg" alt="Recipes 9 - Cook4YouMe blogspot" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: Negeri Sembilan Malaysia Food Fest</p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Duration: 3 minutes 54 seconds</p>
+                    <p class="details">Size of File Archived: 14478393</p>
+                    <p class="details">No of File Archived: 186</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 2.68 MB</p>
+                    <p class="details">No of File Archived: 3 Pages</p>
+                    <a href="https://drive.google.com/file/d/18Axsv0o09Ic4A97u37eY9cKCzG_1r4eZ/view?usp=drivesdk" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="grid-container">
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/blogger.jpeg" alt="Recipes 10 - Ujie Othman blogspot" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: Rendang Maman Makanan Tradisi Gemencheh</p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Duration: 7 minutes 5 seconds</p>
+                    <p class="details">Size of File Archived: 48136624</p>
+                    <p class="details">No of File Archived: 247</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 4.46 MB</p>
+                    <p class="details">No of File Archived: 10 Pages</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/blogger.jpeg" alt="Recipes 11 - Moh kite blogspot" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: 10 Resepi Rendang Tradisional Boleh Anda Sediakan Sendiri Di Rumah</p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Duration: 39 seconds</p>
+                    <p class="details">Size of File Archived: 8169666</p>
+                    <p class="details">No of File Archived: 33</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 1.95 MB</p>
+                    <p class="details">No of File Archived: 1 Pages</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/rasa.my.jpeg" alt="Recipes 12 - Rasa.My" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: Rendang Maman Ayam Kampung Padu Rasa</p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Duration: 47 seconds</p>
+                    <p class="details">Size of File Archived: 5190137</p>
+                    <p class="details">No of File Archived: 69</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 3.03 MB</p>
+                    <p class="details">No of File Archived: 1 Pages</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="grid-container">
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/myresipi.jpeg" alt="Recipes 1 - MyResipi" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: Rendang Maman Ayam Pencen Cara MUDAH, Panas Banyak Kali Pun Sedap!</p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Duration: 1 minutes 56 seconds</p>
+                    <p class="details">Size of File Archived: 11162523</p>
+                    <p class="details">No of File Archived: 218</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 9.95 MB</p>
+                    <p class="details">No of File Archived: 2 Pages</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/blogger.jpeg" alt="Recipes 14 - Mak Ngah Pora" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: Rendang Maman</p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Duration: 3 minutes 9 seconds</p>
+                    <p class="details">Size of File Archived: 8406690</p>
+                    <p class="details">No of File Archived: 110</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 1.55 MB</p>
+                    <p class="details">No of File Archived: 2 Pages</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="collection-item">
+        <div class="recipe-content">
+            <div class="recipe-image-container">
+                <img src="image/siraplimau.jpeg" alt="Recipes 15 - Sirap Limau" class="recipe-image">
+            </div>
+            <div class="recipe-info">
+                <p class="website-scope">Website Scope: Malaysia</p>
+                <p class="topic-name">Topic Name: Rendang Maman Daging Berapi & Tips Elak Kuah Pahit, Speciality Orang Negeri Sembilan!</p>
+                <div class="details-frame transparent-frame httrack-background">
+                    <h3 class="details-title">HTTRACK</h3>
+                    <p class="details">Archive Success: No</p>
+                    <p class="details">Duration: NIL</p>
+                    <p class="details">Size of File Archived: NIL</p>
+                    <p class="details">No of File Archived: NIL</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <div class="details-frame transparent-frame conifer-background">
+                    <h3 class="details-title">CONIFER</h3>
+                    <p class="details">Archive Success: Yes</p>
+                    <p class="details">Size of File Archived: 4.00 MB</p>
+                    <p class="details">No of File Archived: 1 Pages</p>
+                    <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="more-info-btn" target="_blank">More Info</a>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1zvXZ-K5cifJLiGpIYz8Iq8nW0ZhFeCnn?usp=drive_link" class="read-now-btn" target="_blank">Read Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+
+    body {
+        font-family: 'Merriweather', serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background: #f5f5f5;
+        overflow-x: hidden;
+    }
+
+  
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 30px;
+        padding: 30px;
+        position: relative;
+    }
+
+    body {
+        background: linear-gradient(145deg, rgba(255, 220, 185, 0.5), rgba(210, 180, 140, 0.7)),
+        url("image/rbackground.jpeg") no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+    }
+    .collection-item {
+    background: rgba(255, 255, 255, 0.6) url('Background.png') no-repeat center center/cover; 
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    text-align: left;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #ddd; 
+    background-size: cover; 
+}
+
+.collection-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); 
+}
+
+   
+    .collection-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    
+    .collection-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+    .collection-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+   
+    .recipe-image-container {
+        flex: 1;
+        margin-right: 20px;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .recipe-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .recipe-info {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .website-scope {
+        font-weight: bold;
+        color: #6c4f2b;
+    }
+
+    .topic-name {
+        font-size: 18px;
+        color: #5a3e2f;
+        margin-top: 10px;
+        font-weight: normal;
+    }
+
+    .transparent-frame {
+        background: rgba(255, 255, 255, 0.7);
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        position: relative;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .details-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #f39c12;
+        margin-bottom: 10px;
+    }
+
+    .details {
+        font-size: 16px;
+        color: #6c4f2b;
+        margin: 5px 0;
+    }
+
+    .more-info-btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 12px 30px;
+        background-color: #8d6e63;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        border: 2px solid #8d6e63;
+    }
+
+    .more-info-btn:hover {
+        background-color: transparent;
+        color: #8d6e63;
+        border-color: #8d6e63;
+        transform: scale(1.05);
+    }
+
+    .read-now-btn {
+        display: inline-block;
+        padding: 15px 30px;
+        background-color: #6D4C41;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        border: 2px solid #6D4C41;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        border-radius: 4px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .read-now-btn:hover {
+        background-color: transparent;
+        color: #6D4C41;
+        border-color: #6D4C41;
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .read-now-btn:active {
+        transform: scale(1);
+    }
+
+</style>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-top">
+            <p>&copy; 2025 Rendang Maman. All rights reserved.</p>
+        </div>
+
+        <div class="footer-links">
+            <ul>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </div>
+
+        <div class="social-media">
+            <span>Follow us:</span>
+            <a href="https://www.instagram.com/by.brik?igsh=Z2d6eHk0dGNyNTNr"><img src="image/icon ig.png" alt="Instagram" class="social-icon"></a>
+        </div>
+    </div>
+</footer>
+    
+    <script>
+        function revealItems() {
+            var items = document.querySelectorAll('.collection-item');
+            var windowHeight = window.innerHeight;
+            items.forEach(function(item) {
+                var position = item.getBoundingClientRect().top;
+                if (position - windowHeight <= 0) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+
+      
+        window.addEventListener('scroll', revealItems);
+
+        window.onload = revealItems;
+    </script>
+
+<script>
+    function toggleMenu() {
+    const dropdown = document.getElementById("dropdown");
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+}
+
+window.onclick = function(event) {
+    if (!event.target.matches('.hamburger')) {
+        const dropdowns = document.getElementsByClassName("dropdown-content");
+        for (let i = 0; i < dropdowns.length; i++) {
+            const openDropdown = dropdowns[i];
+            if (openDropdown.style.display === "block") {
+                openDropdown.style.display = "none";
+            }
+        }
+    }
+};
+
+
+    </script>  
+</body>
+</html>
